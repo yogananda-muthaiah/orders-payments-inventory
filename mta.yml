@@ -1,0 +1,23 @@
+ID: order-management
+version: 1.0.0
+modules:
+  - name: order-srv
+    type: nodejs
+    path: srv/order
+    requires:
+      - name: messaging
+  - name: payment-srv
+    type: nodejs
+    path: srv/payment
+    requires:
+      - name: messaging
+  - name: inventory-srv
+    type: nodejs
+    path: srv/inventory
+    requires:
+      - name: messaging
+resources:
+  - name: messaging
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: enterprise-messaging
